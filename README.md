@@ -31,7 +31,9 @@
 **Nest ACL** is a **modular Access Control List API** built with **NestJS**, **PostgreSQL**, and **Prisma ORM**.  
 It provides a robust foundation for **authentication**, **authorization**, and **role-based access control (RBAC)**.  
 Following **clean architecture principles**, it ensures clear separation of concerns and serves as a reusable base for multiple projects.
-### 🏗️ Visão Geral da Arquitetura
+
+
+### 🏗️ Architecture Overview
 
 ```mermaid
 graph TB
@@ -104,6 +106,8 @@ graph TB
     style PGREST fill:#008080
 ```
 
+🔐 Authentication Flow
+
 ```mermaid
 sequenceDiagram
     participant C as Cliente
@@ -133,7 +137,7 @@ sequenceDiagram
     API-->>C: Retornar recurso protegido
 ```
 
-### 📁 Estrutura Modular
+📁 Module Structure
 
 ```mermaid
 graph TD
@@ -174,9 +178,9 @@ graph TD
     MODULES --> OWNER_M
 ```
 
-## 🌟 Principais Funcionalidades
+## 🌟 Key Features
 
-### Funcionalidades Core
+### Core Features
 
 - **🔐 Autenticação JWT**: Autenticação segura baseada em tokens com refresh tokens
 - **👥 Controle de Acesso Baseado em Papéis**: Permissões refinadas com papéis ROOT, ADMIN, USER, EDITOR e GUEST
@@ -190,7 +194,7 @@ graph TD
 - **🌐 Pronto para i18n**: Suporte a internacionalização integrado
 - **🔗 Integração PostgREST**: API REST auto-gerada para acesso direto ao banco
 
-### Funcionalidades Avançadas de ACL
+### Advanced ACL Features
 
 - **🎯 Permissões Contextuais**: Suporte para contextos `own`, `any`, `team` e `department`
 - **🔄 Herança de Permissões**: Herança automática de permissões através da hierarquia de papéis
@@ -199,7 +203,7 @@ graph TD
 - **🏢 Propriedade de Recursos**: Sistema de propriedade integrado com suporte a contextos de equipe e departamento
 - **🔍 Controle Granular de Permissões**: Sistema de permissões baseado em Recurso + Ação + Contexto
 
-### Esquema do Banco de Dados
+### Database Schema
 
 ```mermaid
 erDiagram
