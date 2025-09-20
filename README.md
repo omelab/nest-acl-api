@@ -1,32 +1,26 @@
 <h1 align="center">
-  <img src=".github/assets/images/img1.png" height="200" alt="acl">
+  <img src=".github/assets/images/img1.png" height="200" alt="Nest ACL Logo">
 </h1>
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/omelab/nest-acl-api?color=00b8d3?style=flat&logo=appveyor" alt="License" />
-  <img src="https://img.shields.io/github/languages/top/omelab/nest-acl-api?style=flat&logo=appveyor" alt="GitHub top language" >
-  <img src="https://img.shields.io/github/languages/count/omelab/nest-acl-api?style=flat&logo=appveyor" alt="GitHub language count" >
-  <img src="https://img.shields.io/github/repo-size/omelab/nest-acl-api?style=flat&logo=appveyor" alt="Repository size" >
-  <img src="https://wakatime.com/badge/user/e61842d0-c588-4586-96a3-f0448a434be4/project/b0347a5f-cacf-486d-bd2d-b91d3e6cb570.svg?style=flat&logo=appveyor" alt="Wakatime" >
-  <a href="https://github.com/omelab/nest-acl-api/commits/master">
-    <img src="https://img.shields.io/github/last-commit/omelab/nest-acl-api?style=flat&logo=appveyor" alt="GitHub last commit" >
-    <img src="https://img.shields.io/badge/made%20by-Maia-15c3d6?style=flat&logo=appveyor" alt="Maia" >  
-  </a>
+  <img src="https://img.shields.io/github/license/your-username/nest-acl?color=00b8d3&style=flat" alt="License" />
+  <img src="https://img.shields.io/github/languages/top/your-username/nest-acl?style=flat" alt="Top Language" />
+  <img src="https://img.shields.io/github/repo-size/your-username/nest-acl?style=flat" alt="Repo Size" />
+  <img src="https://img.shields.io/github/last-commit/your-username/nest-acl?style=flat" alt="Last Commit" />
+  <img src="https://wakatime.com/badge/user/your-wakatime-id/project/your-project-id.svg?style=flat" alt="Wakatime" />
 </p>
 
 <br>
 
 <p align="center">
-    <a href="README.md">English</a>
-    ·
-    <a href="README-pt.md">Portuguese</a>
+  <a href="README.md">English</a>
 </p>
 
 <p align="center">
-  <a href="#bookmark-about">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#computer-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#wrench-tools">Tools</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#package-installation">Installation</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#bookmark-about">About</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#computer-technologies">Technologies</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#wrench-tools">Tools</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#package-installation">Installation</a>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#memo-license">License</a>
 </p>
 
@@ -34,46 +28,48 @@
 
 ## :bookmark: About
 
-**Base ACL** is a modular access control list API built with AdonisJS v6 that provides a robust foundation for
-authentication and role-based access control. The API follows clean architecture principles with clear separation of
-concerns and is designed to serve as a base for multiple projects.
+**Nest ACL** is a **modular Access Control List API** built with **NestJS**, **PostgreSQL**, and **Prisma ORM**.  
+It provides a robust foundation for **authentication**, **authorization**, and **role-based access control (RBAC)**.  
+Following **clean architecture principles**, it ensures clear separation of concerns and serves as a reusable base for multiple projects.
 
-### 🏗️ Architecture Overview
+---
+
+### 🏗️ Visão Geral da Arquitetura
 
 ```mermaid
 graph TB
-    subgraph "Client Layer"
-        WEB[Web Apps]
-        MOB[Mobile Apps]
-        API[External APIs]
+    subgraph "Camada Cliente"
+        WEB[Aplicações Web]
+        MOB[Aplicações Mobile]
+        API[APIs Externas]
     end
 
-    subgraph "API Gateway - v1"
+    subgraph "Gateway API - v1"
         ROUTES["/api/v1/*"]
-        MW[Middleware Stack]
+        MW[Stack de Middleware]
     end
 
-    subgraph "Modules"
-        AUTH[Auth Module<br/>JWT, Sessions]
-        USER[User Module<br/>CRUD, Profile]
-        ROLE[Role Module<br/>RBAC, Hierarchy]
-        PERM[Permission Module<br/>Context-aware, Inheritance]
-        FILE[File Module<br/>Upload, Storage]
-        AUDIT[Audit Module<br/>Logging, Analytics]
-        HEALTH[Health Module<br/>Status, Monitoring]
+    subgraph "Módulos"
+        AUTH[Módulo Auth<br/>JWT, Sessões]
+        USER[Módulo Usuário<br/>CRUD, Perfil]
+        ROLE[Módulo Papel<br/>RBAC, Hierarquia]
+        PERM[Módulo Permissão<br/>Contextual, Herança]
+        FILE[Módulo Arquivo<br/>Upload, Armazenamento]
+        AUDIT[Módulo Auditoria<br/>Logs, Analytics]
+        HEALTH[Módulo Saúde<br/>Status, Monitoramento]
     end
 
-    subgraph "Core Services"
-        JWT[JWT Service]
-        HASH[Hash Service]
-        VALIDATOR[Validator Service]
-        STORAGE[Storage Service]
+    subgraph "Serviços Core"
+        JWT[Serviço JWT]
+        HASH[Serviço Hash]
+        VALIDATOR[Serviço Validador]
+        STORAGE[Serviço Armazenamento]
     end
 
-    subgraph "Data Layer"
-        TS[(PostgreSQL<br/>Main Database)]
-        REDIS[(Redis<br/>Cache & Sessions)]
-        PGREST[PostgREST<br/>Auto-generated REST API]
+    subgraph "Camada de Dados"
+        TS[(PostgreSQL<br/>Banco Principal)]
+        REDIS[(Redis<br/>Cache & Sessões)]
+        PGREST[PostgREST<br/>API REST Auto-gerada]
     end
 
     WEB --> ROUTES
@@ -109,66 +105,64 @@ graph TB
     style TS fill:#336791
     style REDIS fill:#DC382D
     style PGREST fill:#008080
-```
-
-### 🔐 Authentication Flow
+```### 🔐 Fluxo de Autenticação
 
 ```mermaid
 sequenceDiagram
-    participant C as Client
-    participant API as API Gateway
-    participant AUTH as Auth Module
-    participant JWT as JWT Service
+    participant C as Cliente
+    participant API as Gateway API
+    participant AUTH as Módulo Auth
+    participant JWT as Serviço JWT
     participant DB as PostgreSQL
-    participant REDIS as Redis Cache
+    participant REDIS as Cache Redis
 
     C->>API: POST /api/v1/sessions/sign-in
-    API->>AUTH: Validate credentials
-    AUTH->>DB: Find user by email
-    DB-->>AUTH: User data
-    AUTH->>AUTH: Verify password hash
-    AUTH->>JWT: Generate tokens
-    JWT-->>AUTH: Access & Refresh tokens
-    AUTH->>REDIS: Store session
-    AUTH-->>C: Return tokens + user data
+    API->>AUTH: Validar credenciais
+    AUTH->>DB: Buscar usuário por email
+    DB-->>AUTH: Dados do usuário
+    AUTH->>AUTH: Verificar hash da senha
+    AUTH->>JWT: Gerar tokens
+    JWT-->>AUTH: Tokens de acesso & refresh
+    AUTH->>REDIS: Armazenar sessão
+    AUTH-->>C: Retornar tokens + dados do usuário
 
-    Note over C,API: Subsequent requests
+    Note over C,API: Requisições subsequentes
 
     C->>API: GET /api/v1/users (Bearer token)
-    API->>AUTH: Validate JWT
-    AUTH->>REDIS: Check session
-    REDIS-->>AUTH: Session valid
-    AUTH-->>API: User authenticated
-    API-->>C: Return protected resource
+    API->>AUTH: Validar JWT
+    AUTH->>REDIS: Verificar sessão
+    REDIS-->>AUTH: Sessão válida
+    AUTH-->>API: Usuário autenticado
+    API-->>C: Retornar recurso protegido
 ```
 
-### 📁 Module Structure
+### 📁 Estrutura Modular
 
 ```mermaid
 graph TD
-    subgraph "Application Structure"
+    subgraph "Estrutura da Aplicação"
         APP[app/]
         MODULES[modules/]
 
-        subgraph "User Module"
+        subgraph "Módulo Usuário"
             USER_M[user/]
         end
-        subgraph "Role Module"
+        subgraph "Módulo Papel"
             ROLE_M[role/]
         end
-        subgraph "Permission Module"
+        subgraph "Módulo Permissão"
             PERM_M[permission/]
         end
-        subgraph "File Module"
+        subgraph "Módulo Arquivo"
             FILE_M[file/]
         end
-        subgraph "Audit Module"
+        subgraph "Módulo Auditoria"
             AUDIT_M[audit/]
         end
-        subgraph "Health Module"
+        subgraph "Módulo Saúde"
             HEALTH_M[health/]
         end
-        subgraph "Ownership Module"
+        subgraph "Módulo Propriedade"
             OWNER_M[ownership/]
         end
     end
@@ -183,43 +177,43 @@ graph TD
     MODULES --> OWNER_M
 ```
 
-## 🌟 Key Features
+## 🌟 Principais Funcionalidades
 
-### Core Features
+### Funcionalidades Core
 
-- **🔐 JWT Authentication**: Secure token-based authentication with refresh tokens
-- **👥 Role-Based Access Control**: Fine-grained permissions with ROOT, ADMIN, USER, EDITOR, and GUEST roles
-- **📁 Modular Architecture**: Clean separation of concerns with feature modules
-- **🗄️ PostgreSQL**: Robust and reliable database
-- **🚀 RESTful API**: Well-structured endpoints following REST principles
-- **📤 File Uploads**: Secure file handling with multiple storage drivers
-- **🏥 Health Monitoring**: Built-in health check endpoints
-- **🔒 Security First**: Password hashing, CORS, rate limiting ready
-- **📝 Request Validation**: DTOs with runtime validation
-- **🌐 i18n Ready**: Internationalization support built-in
-- **🔗 PostgREST Integration**: Auto-generated REST API for direct database access
+- **🔐 Autenticação JWT**: Autenticação segura baseada em tokens com refresh tokens
+- **👥 Controle de Acesso Baseado em Papéis**: Permissões refinadas com papéis ROOT, ADMIN, USER, EDITOR e GUEST
+- **📁 Arquitetura Modular**: Clara separação de responsabilidades com módulos de funcionalidades
+- **🗄️ PostgreSQL**: Banco de dados robusto e confiável
+- **🚀 API RESTful**: Endpoints bem estruturados seguindo princípios REST
+- **📤 Upload de Arquivos**: Manipulação segura de arquivos com múltiplos drivers de armazenamento
+- **🏥 Monitoramento de Saúde**: Endpoints integrados para verificação de saúde
+- **🔒 Segurança em Primeiro Lugar**: Hash de senhas, CORS, rate limiting pronto
+- **📝 Validação de Requisições**: DTOs com validação em tempo de execução
+- **🌐 Pronto para i18n**: Suporte a internacionalização integrado
+- **🔗 Integração PostgREST**: API REST auto-gerada para acesso direto ao banco
 
-### Advanced ACL Features
+### Funcionalidades Avançadas de ACL
 
-- **🎯 Context-Aware Permissions**: Support for `own`, `any`, `team`, and `department` contexts
-- **🔄 Permission Inheritance**: Automatic permission inheritance through role hierarchy
-- **📋 Comprehensive Audit Trail**: Track all permission checks and access attempts
-- **⚡ Redis-Cached Permissions**: High-performance permission checking with intelligent caching
-- **🏢 Resource Ownership**: Built-in ownership system supporting team and department contexts
-- **🔍 Granular Permission Control**: Resource + Action + Context based permission system
+- **🎯 Permissões Contextuais**: Suporte para contextos `own`, `any`, `team` e `department`
+- **🔄 Herança de Permissões**: Herança automática de permissões através da hierarquia de papéis
+- **📋 Trilha de Auditoria Completa**: Rastreamento de todas as verificações de permissão e tentativas de acesso
+- **⚡ Permissões em Cache Redis**: Verificação de permissões de alta performance com cache inteligente
+- **🏢 Propriedade de Recursos**: Sistema de propriedade integrado com suporte a contextos de equipe e departamento
+- **🔍 Controle Granular de Permissões**: Sistema de permissões baseado em Recurso + Ação + Contexto
 
-### Database Schema
+### Esquema do Banco de Dados
 
 ```mermaid
 erDiagram
-    USERS ||--o{ USER_ROLES : has
-    ROLES ||--o{ USER_ROLES : has
-    USERS ||--o{ USER_PERMISSIONS : has
-    USERS ||--o{ FILES : uploads
-    ROLES ||--o{ ROLE_PERMISSIONS : has
-    PERMISSIONS ||--o{ ROLE_PERMISSIONS : has
-    PERMISSIONS ||--o{ USER_PERMISSIONS : has
-    USERS ||--o{ AUDIT_LOGS : generates
+    USERS ||--o{ USER_ROLES : possui
+    ROLES ||--o{ USER_ROLES : possui
+    USERS ||--o{ USER_PERMISSIONS : possui
+    USERS ||--o{ FILES : envia
+    ROLES ||--o{ ROLE_PERMISSIONS : possui
+    PERMISSIONS ||--o{ ROLE_PERMISSIONS : possui
+    PERMISSIONS ||--o{ USER_PERMISSIONS : possui
+    USERS ||--o{ AUDIT_LOGS : gera
 
     USERS {
         bigint id PK
@@ -312,19 +306,19 @@ erDiagram
 
 <br>
 
-## :computer: Technologies
+## :computer: Tecnologias
 
 - **[Typescript](https://www.typescriptlang.org/)**
 - **[Node.js](https://nodejs.org/)**
 - **[AdonisJS](https://adonisjs.com/)**
 - **[PostgreSQL](https://www.postgresql.org/)**
-- **[Redis](https://redis.io/)** - In-memory data store
-- **[PostgREST](https://postgrest.org/)** - Auto-generated REST API
+- **[Redis](https://redis.io/)** - Armazenamento de dados em memória
+- **[PostgREST](https://postgrest.org/)** - API REST auto-gerada
 - **[Docker](https://www.docker.com/)**
 
 <br>
 
-## :wrench: Tools
+## :wrench: Ferramentas
 
 - **[WebStorm](https://www.jetbrains.com/webstorm/)**
 - **[Insomnia](https://insomnia.rest/)**
@@ -332,11 +326,11 @@ erDiagram
 
 <br>
 
-## :package: Installation
+## :package: Instalação
 
-### :heavy_check_mark: **Prerequisites**
+### :heavy_check_mark: **Pré-requisitos**
 
-The following software must be installed:
+Os seguintes softwares devem estar instalados:
 
 - **[Node.js](https://nodejs.org/en/)**
 - **[Git](https://git-scm.com/)**
@@ -345,7 +339,7 @@ The following software must be installed:
 
 <br>
 
-### :arrow_down: **Cloning the repository**
+### :arrow_down: **Clonando o repositório**
 
 ```sh
   $ git clone https://github.com/omelab/nest-acl-api.git
@@ -353,41 +347,41 @@ The following software must be installed:
 
 <br>
 
-### :arrow_forward: **Running the application**
+### :arrow_forward: **Rodando o backend**
 
 - :package: API
 
 ```sh
   $ cd base-acl-api
-  # Dependencies install.
-  $ yarn # or npm install
-  # Config environment system
+  # Instalação de dependências.
+  $ yarn # ou npm install
+  # Configuração ambiente de sistema
   $ cp .env.example .env
-  # Data base creation.
-  $ node ace migration:run # or docker-compose up --build
-  # API start
-  $ node ace serve --hmr # or pnpm dev
+  # Criação de banco de dados.
+  $ node ace migration:run # ou docker-compose up --build
+  # Iniciar API
+  $ node ace serve --hmr # ou pnpm dev
 ```
 
 <br>
 
-## :twisted_rightwards_arrows: API Routes
+## :twisted_rightwards_arrows: Rotas da API
 
-The API is versioned and all endpoints are prefixed with `/api/v1/`. Below is the complete route structure:
+A API é versionada e todos os endpoints são prefixados com `/api/v1/`. Abaixo está a estrutura completa de rotas:
 
-### 🛣️ Route Organization
+### 🛣️ Organização das Rotas
 
 ```mermaid
 graph LR
-    subgraph "Public Routes"
+    subgraph "Rotas Públicas"
         HOME[GET /]
         HEALTH[GET /api/v1/health]
         SIGNIN[POST /api/v1/sessions/sign-in]
         SIGNUP[POST /api/v1/sessions/sign-up]
     end
 
-    subgraph "Protected Routes"
-        subgraph "User Routes"
+    subgraph "Rotas Protegidas"
+        subgraph "Rotas de Usuário"
             USER_LIST[GET /api/v1/users]
             USER_GET[GET /api/v1/users/:id]
             USER_CREATE[POST /api/v1/users]
@@ -395,12 +389,12 @@ graph LR
             USER_DELETE[DELETE /api/v1/users/:id]
         end
 
-        subgraph "Admin Routes"
+        subgraph "Rotas Admin"
             ROLE_LIST[GET /api/v1/admin/roles]
             ROLE_ATTACH[PUT /api/v1/admin/roles/attach]
         end
 
-        subgraph "File Routes"
+        subgraph "Rotas de Arquivo"
             FILE_UPLOAD[POST /api/v1/files/upload]
         end
     end
@@ -413,41 +407,41 @@ graph LR
     style ROLE_ATTACH fill:#FFB6C1
 ```
 
-### 📋 Route Details
+### 📋 Detalhes das Rotas
 
-| Method     | Endpoint                                    | Description                   | Auth Required | Permission/Role    |
-| ---------- | ------------------------------------------- | ----------------------------- | ------------- | ------------------ |
-| **GET**    | `/`                                         | API information               | ❌            | -                  |
-| **GET**    | `/api/v1/health`                            | Health check                  | ❌            | -                  |
-| **POST**   | `/api/v1/sessions/sign-in`                  | User login                    | ❌            | -                  |
-| **POST**   | `/api/v1/sessions/sign-up`                  | User registration             | ❌            | -                  |
-| **GET**    | `/api/v1/verify-email`                      | Verify user email             | ❌            | -                  |
-| **POST**   | `/api/v1/resend-verification-email`         | Resend verification email     | ✅            | -                  |
-| **GET**    | `/api/v1/me`                                | Get current user profile      | ✅            | -                  |
-| **GET**    | `/api/v1/me/permissions`                    | Get current user permissions  | ✅            | -                  |
-| **GET**    | `/api/v1/me/roles`                          | Get current user roles        | ✅            | -                  |
-| **GET**    | `/api/v1/users`                             | List users (paginated)        | ✅            | users.list         |
-| **GET**    | `/api/v1/users/:id`                         | Get user by ID                | ✅            | users.read         |
-| **POST**   | `/api/v1/users`                             | Create user                   | ✅            | users.create       |
-| **PUT**    | `/api/v1/users/:id`                         | Update user                   | ✅            | users.update       |
-| **DELETE** | `/api/v1/users/:id`                         | Delete user                   | ✅            | users.delete       |
-| **GET**    | `/api/v1/admin/roles`                       | List roles                    | ✅            | ROOT, ADMIN        |
-| **PUT**    | `/api/v1/admin/roles/attach`                | Attach role to user           | ✅            | ROOT, ADMIN        |
-| **GET**    | `/api/v1/admin/permissions`                 | List permissions              | ✅            | permissions.list   |
-| **POST**   | `/api/v1/admin/permissions`                 | Create permission             | ✅            | permissions.create |
-| **PUT**    | `/api/v1/admin/roles/permissions/sync`      | Sync role permissions         | ✅            | permissions.update |
-| **PUT**    | `/api/v1/admin/roles/permissions/attach`    | Attach permissions to role    | ✅            | permissions.update |
-| **PUT**    | `/api/v1/admin/roles/permissions/detach`    | Detach permissions from role  | ✅            | permissions.update |
-| **PUT**    | `/api/v1/admin/users/permissions/sync`      | Sync user permissions         | ✅            | permissions.update |
-| **GET**    | `/api/v1/admin/users/:id/permissions`       | Get user's direct permissions | ✅            | permissions.list   |
-| **POST**   | `/api/v1/admin/users/:id/permissions/check` | Check user permissions        | ✅            | permissions.list   |
-| **POST**   | `/api/v1/files/upload`                      | Upload file                   | ✅            | files.create       |
+| Método     | Endpoint                                    | Descrição                           | Auth Obrigatória | Permissão/Papel    |
+| ---------- | ------------------------------------------- | ----------------------------------- | ---------------- | ------------------ |
+| **GET**    | `/`                                         | Informações da API                  | ❌               | -                  |
+| **GET**    | `/api/v1/health`                            | Verificação de saúde                | ❌               | -                  |
+| **POST**   | `/api/v1/sessions/sign-in`                  | Login de usuário                    | ❌               | -                  |
+| **POST**   | `/api/v1/sessions/sign-up`                  | Registro de usuário                 | ❌               | -                  |
+| **GET**    | `/api/v1/verify-email`                      | Verificar email do usuário          | ❌               | -                  |
+| **POST**   | `/api/v1/resend-verification-email`         | Reenviar email de verificação       | ✅               | -                  |
+| **GET**    | `/api/v1/me`                                | Obter perfil do usuário atual       | ✅               | -                  |
+| **GET**    | `/api/v1/me/permissions`                    | Obter permissões do usuário atual   | ✅               | -                  |
+| **GET**    | `/api/v1/me/roles`                          | Obter papéis do usuário atual       | ✅               | -                  |
+| **GET**    | `/api/v1/users`                             | Listar usuários (paginado)          | ✅               | users.list         |
+| **GET**    | `/api/v1/users/:id`                         | Obter usuário por ID                | ✅               | users.read         |
+| **POST**   | `/api/v1/users`                             | Criar usuário                       | ✅               | users.create       |
+| **PUT**    | `/api/v1/users/:id`                         | Atualizar usuário                   | ✅               | users.update       |
+| **DELETE** | `/api/v1/users/:id`                         | Deletar usuário                     | ✅               | users.delete       |
+| **GET**    | `/api/v1/admin/roles`                       | Listar papéis                       | ✅               | ROOT, ADMIN        |
+| **PUT**    | `/api/v1/admin/roles/attach`                | Atribuir papel ao usuário           | ✅               | ROOT, ADMIN        |
+| **GET**    | `/api/v1/admin/permissions`                 | Listar permissões                   | ✅               | permissions.list   |
+| **POST**   | `/api/v1/admin/permissions`                 | Criar permissão                     | ✅               | permissions.create |
+| **PUT**    | `/api/v1/admin/roles/permissions/sync`      | Sincronizar permissões do papel     | ✅               | permissions.update |
+| **PUT**    | `/api/v1/admin/roles/permissions/attach`    | Anexar permissões ao papel          | ✅               | permissions.update |
+| **PUT**    | `/api/v1/admin/roles/permissions/detach`    | Desanexar permissões do papel       | ✅               | permissions.update |
+| **PUT**    | `/api/v1/admin/users/permissions/sync`      | Sincronizar permissões do usuário   | ✅               | permissions.update |
+| **GET**    | `/api/v1/admin/users/:id/permissions`       | Obter permissões diretas do usuário | ✅               | permissions.list   |
+| **POST**   | `/api/v1/admin/users/:id/permissions/check` | Verificar permissões do usuário     | ✅               | permissions.list   |
+| **POST**   | `/api/v1/files/upload`                      | Upload de arquivo                   | ✅               | files.create       |
 
-### 🔄 Request/Response Flow
+### 🔄 Fluxo de Requisição/Resposta
 
 ```mermaid
 sequenceDiagram
-    participant Client
+    participant Cliente
     participant Router
     participant Middleware
     participant Controller
@@ -455,86 +449,67 @@ sequenceDiagram
     participant Repository
     participant Database
 
-    Client->>Router: HTTP Request
-    Router->>Middleware: Route Match
+    Cliente->>Router: Requisição HTTP
+    Router->>Middleware: Match de Rota
 
-    alt Protected Route
-        Middleware->>Middleware: Auth Check
-        Middleware->>Middleware: ACL Check
+    alt Rota Protegida
+        Middleware->>Middleware: Verificação Auth
+        Middleware->>Middleware: Verificação ACL
     end
 
-    Middleware->>Controller: Request Validated
-    Controller->>Service: Business Logic
-    Service->>Repository: Data Access
+    Middleware->>Controller: Requisição Validada
+    Controller->>Service: Lógica de Negócio
+    Service->>Repository: Acesso aos Dados
     Repository->>Database: Query
-    Database-->>Repository: Result
-    Repository-->>Service: Entity/DTO
-    Service-->>Controller: Response Data
-    Controller-->>Client: HTTP Response
+    Database-->>Repository: Resultado
+    Repository-->>Service: Entidade/DTO
+    Service-->>Controller: Dados de Resposta
+    Controller-->>Cliente: Resposta HTTP
 ```
 
-### 🔐 Permission System
+### 🔐 Sistema de Permissões
 
-The advanced permission system supports context-aware access control:
+O sistema avançado de permissões suporta controle de acesso contextual:
 
 ```mermaid
 graph TD
-    subgraph "Permission Structure"
-        P[Permission]
-        P --> R[Resource]
-        P --> A[Action]
-        P --> C[Context]
+    subgraph "Estrutura de Permissão"
+        P[Permissão]
+        P --> R[Recurso]
+        P --> A[Ação]
+        P --> C[Contexto]
 
-        R --> |examples| R1[users]
-        R --> |examples| R2[files]
-        R --> |examples| R3[permissions]
+        R --> |exemplos| R1[users]
+        R --> |exemplos| R2[files]
+        R --> |exemplos| R3[permissions]
 
-        A --> |examples| A1[create]
-        A --> |examples| A2[read]
-        A --> |examples| A3[update]
-        A --> |examples| A4[delete]
-        A --> |examples| A5[list]
+        A --> |exemplos| A1[create]
+        A --> |exemplos| A2[read]
+        A --> |exemplos| A3[update]
+        A --> |exemplos| A4[delete]
+        A --> |exemplos| A5[list]
 
-        C --> |examples| C1[own - Own resources only]
-        C --> |examples| C2[any - Any resource]
-        C --> |examples| C3[team - Team resources]
-        C --> |examples| C4[department - Department resources]
+        C --> |exemplos| C1[own - Apenas recursos próprios]
+        C --> |exemplos| C2[any - Qualquer recurso]
+        C --> |exemplos| C3[team - Recursos da equipe]
+        C --> |exemplos| C4[department - Recursos do departamento]
     end
 ```
 
-#### Role Hierarchy & Inheritance
+#### Hierarquia de Papéis e Herança
 
 ```
 ROOT
-├── ADMIN (inherits all ROOT permissions)
-│   ├── USER (inherits basic ADMIN permissions)
-│   │   └── GUEST (inherits limited USER permissions)
-│   └── EDITOR (inherits content ADMIN permissions)
-       └── USER (inherits from EDITOR)
+├── ADMIN (herda todas as permissões ROOT)
+│   ├── USER (herda permissões básicas ADMIN)
+│   │   └── GUEST (herda permissões limitadas USER)
+│   └── EDITOR (herda permissões de conteúdo ADMIN)
+       └── USER (herda de EDITOR)
 ```
 
-#### Context Examples
+#### Exemplos de Contexto
 
-- `users.update.own` - Can only update own profile
-- `users.update.any` - Can update any user
-- `files.delete.team` - Can delete files from team members
-- `reports.read.department` - Can read reports from own department
-
-### 📥 Insomnia Collection
-
-Get the complete API collection for
-Insomnia: [Download](https://raw.githubusercontent.com/omelab/nest-acl-api/master/.github/assets/insomnia/Insomnia.json.zip)
-
-## :memo: License
-
-This project is under the **MIT** license. [MIT](./LICENSE) ❤️
-
-Liked? Leave a little star to help the project ⭐
-
-<br>
-
- 
-
-<p align="center">
-  &copy; 2010-present <a href="https://github.com/omelab/" target="_blank">OmeLab</a>
-</p>
+- `users.update.own` - Pode atualizar apenas o próprio perfil
+- `users.update.any` - Pode atualizar qualquer usuário
+- `files.delete.team` - Pode deletar arquivos de membros da equipe
+- `reports.read.department` - Pode ler relatórios do próprio departamento
