@@ -31,9 +31,6 @@
 **Nest ACL** is a **modular Access Control List API** built with **NestJS**, **PostgreSQL**, and **Prisma ORM**.  
 It provides a robust foundation for **authentication**, **authorization**, and **role-based access control (RBAC)**.  
 Following **clean architecture principles**, it ensures clear separation of concerns and serves as a reusable base for multiple projects.
-
----
-
 ### 🏗️ Visão Geral da Arquitetura
 
 ```mermaid
@@ -105,7 +102,7 @@ graph TB
     style TS fill:#336791
     style REDIS fill:#DC382D
     style PGREST fill:#008080
-```### 🔐 Fluxo de Autenticação
+```
 
 ```mermaid
 sequenceDiagram
